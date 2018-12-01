@@ -34,7 +34,6 @@ public:
 
     void RANSAC();
     void computeHomography();
-    void computeAllHomography();
     int findInliner();
     int updateRuntime(double ep, int runtime);
     void computeReprojError();
@@ -47,11 +46,6 @@ public:
     void saveImg(const CImg<float>& img, const string& s, int i);
     void over();
     void readAgain();
-    void getGrayAgain();
-    void beginSIFTAgain();
-    void drawSIFTpointAgain();
-    void computeHT();
-    void refine(CImg<float>& img);
     
 private:
     vector<CImg<float>> srcs;
@@ -59,7 +53,7 @@ private:
     vector<vector<SiftDescriptor>> descriptors;
     vector<SiftDescriptor> match1, match2;
     vector<CImg<float>> marks;
-    vector<vector<double>> Hmatrix, tmatrix, HTmatrix;
+    vector<vector<double>> Hmatrix, tmatrix;
     vector<SiftDescriptor*> sample1, sample2;
     double threshold;
     vector<double> err;
@@ -69,6 +63,7 @@ private:
     CImg<float> fusion;
     int times;
     int total;
+    string dataset;
 };
 
 #endif
